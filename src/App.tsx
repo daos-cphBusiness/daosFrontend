@@ -85,14 +85,6 @@ function App() {
           onChange={handleOnChange}
         />
 
-        {/* <Input
-          type="password"
-          label="Confirm Password"
-          name="confirmPassword"
-          placeholder="Confirm password"
-          value={newUserData.confirmPassword}
-          onChange={handleOnChange}
-        /> */}
         <Button variant="primary" size="default" type="submit" label="Register" />
       </form>
 
