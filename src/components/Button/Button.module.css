@@ -12,16 +12,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* align-self: center; */
-  /* align-self: flex-start; Prevents the button from stretching */
 }
 
 .defaultSize {
-  width: 345px; /* Fixed width */
+  width: 345px;
 }
 
 .autoSize {
-  /* max-width: 345px; */
   width: auto;
 }
 

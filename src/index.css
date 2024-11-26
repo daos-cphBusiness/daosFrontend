@@ -11,6 +11,7 @@
   --light-blue: #4a4e6e;
 }
 
+/* Font classes */
 .oswald-light {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
@@ -39,7 +40,6 @@
   font-style: normal;
 }
 
-/* Example usage for Montserrat font */
 .montserrat-light {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
