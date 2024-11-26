@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+}
+
+.logo {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  color: #bf1e2e;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}

@@ -1,7 +1,6 @@
-/* Common styles for all buttons */
 .commonButton {
   font-family: "Montserrat", sans-serif;
-  font-weight: 500; /* Default weight for the button text */
+  font-weight: 500;
   font-size: 16px;
   border-radius: 10px;
   box-shadow: 0px 2px 4px #00000029;
@@ -17,7 +16,6 @@
   /* align-self: flex-start; Prevents the button from stretching */
 }
 
-/* Size styles */
 .defaultSize {
   width: 345px; /* Fixed width */
 }
@@ -27,33 +25,31 @@
   width: auto;
 }
 
-/* Primary button styles */
 .primaryButton {
-  background-color: #353a5d;
-  color: #ffffff;
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 .primaryButton:hover {
-  background-color: #4a4e6e;
+  background-color: var(--light-blue);
 }
 
 .primaryButton:active {
-  background-color: #5a5e7e; /* Even lighter color on click */
-  transform: scale(0.98); /* Optional click effect */
+  background-color: #5a5e7e; /* Even lighter blue on click */
+  transform: scale(0.98);
 }
 
-/* Secondary button styles */
 .secondaryButton {
-  background-color: #ffffff;
-  color: #353a5d;
-  border: 1px solid #dddddd;
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--light-gray);
 }
 
 .secondaryButton:hover {
-  background-color: #f9f9f9;
+  background-color: var(--lighter-gray);
 }
 
 .secondaryButton:active {
-  background-color: #e6e6e6; /* Even darker color on click */
-  transform: scale(0.98); /* Optional click effect */
+  background-color: var(--light-gray);
+  transform: scale(0.98);
 }
