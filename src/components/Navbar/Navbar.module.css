@@ -15,7 +15,16 @@
   text-decoration: none;
 }
 
-.buttons {
+.links {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+}
+
+.customLink{
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color:var(--blue);
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
