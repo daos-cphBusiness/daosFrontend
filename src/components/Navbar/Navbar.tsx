@@ -24,35 +24,37 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <Link to="/" className={styles.logo}>
-        Music Samspil
-      </Link>
-      <div className={styles.links}>
-        {isAuthenticated ? (
-          <>
-            <Link to="/find-ensemble" className={styles.customLink}>
-              Find Ensemble
-            </Link>
-            <Link to="/profile" className={styles.customLink}>
-             Profile
-            </Link>
-            <Button size="auto" variant="secondary" onClick={handleSignOut}>
-              Sign out
-            </Button>
-          </>
-        ) : (
-          <>
-            <Link to="/sign-up">
-              <Button size="auto">Sign up</Button>
-            </Link>
-            <Link to="/sign-in">
-              <Button size="auto" variant="secondary">
-                Sign in
-              </Button>
-            </Link>
-          </>
-        )}
+      <div className={styles.logoContainer}>
+        <Link to="/" className={styles.logo}>
+          Music Samspil
+        </Link>
+        <p className={styles.logoText}>Skabt af DAOS - Dansk Amatørorkester Samvirke</p>
       </div>
+
+      {isAuthenticated ? (
+        <div className={styles.navLinks}>
+          <Link to="/ensembles" className={styles.customLink}>
+            Find Ensemble
+          </Link>
+          <Link to="/profile" className={styles.customLink}>
+            Profile
+          </Link>
+          <Button size="auto" variant="secondary" onClick={handleSignOut}>
+            Sign out
+          </Button>
+        </div>
+      ) : (
+        <div className={styles.navLinks}>
+          <Link to="/sign-up">
+            <Button size="auto">Sign up</Button>
+          </Link>
+          <Link to="/sign-in">
+            <Button size="auto" variant="secondary">
+              Sign in
+            </Button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

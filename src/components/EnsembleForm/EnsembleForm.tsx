@@ -44,7 +44,7 @@ export function EnsembleForm() {
         setErrors([]);
 
         // Redirect to front page
-        navigate("/");
+        navigate("/ensembles");
       } else {
         if (Array.isArray(data.message)) {
           setErrors(data.message);
