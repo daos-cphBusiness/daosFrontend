@@ -34,3 +34,7 @@
   color: var(--blue);
   align-self: flex-start;
 }
+
+.cta {
+  align-self: flex-end;
+}

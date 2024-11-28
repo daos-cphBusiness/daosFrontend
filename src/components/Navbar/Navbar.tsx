@@ -36,8 +36,8 @@ export default function Navbar() {
           <Link to="/ensembles" className={styles.customLink}>
             Find Ensemble
           </Link>
-          <Link to="/profile" className={styles.customLink}>
-            Profile
+          <Link to="/create-ensemble" className={styles.customLink}>
+            Create Ensemble
           </Link>
           <Button size="auto" variant="secondary" onClick={handleSignOut}>
             Sign out
