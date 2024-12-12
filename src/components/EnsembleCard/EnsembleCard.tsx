@@ -3,13 +3,14 @@ import styles from "./EnsembleCard.module.css";
 // import InstrumentIcon from "../../assets/icons/instruments.svg";
 
 export type EnsembleCardProps = {
+  variant: "join" | "view";
   title: string;
   description: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export function EnsembleCard(props: EnsembleCardProps) {
-  const { title, description, onClick } = props;
+  const { variant, title, description, onClick } = props;
 
   return (
     <div className={styles.ensembleCard}>
@@ -18,11 +19,13 @@ export function EnsembleCard(props: EnsembleCardProps) {
         {/* <img src={InstrumentIcon} alt="icon" /> */}
       </div>
       <p className={styles.description}>{description}</p>
-      <div className={styles.cta}>
-        <Button variant="secondary" size="auto" onClick={onClick}>
-          Join
-        </Button>
-      </div>
+      {variant === "join" && (
+        <div className={styles.cta}>
+          <Button variant="secondary" size="auto" onClick={onClick}>
+            Join
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

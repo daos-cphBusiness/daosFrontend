@@ -9,6 +9,7 @@ export function EnsembleForm() {
   const [newEnsembleData, setNewEnsembleData] = useState({
     name: "",
     description: "",
+    genre: "",
   });
 
   const [errors, setErrors] = useState<
@@ -35,12 +36,13 @@ export function EnsembleForm() {
         body: JSON.stringify({
           name: newEnsembleData.name,
           description: newEnsembleData.description,
+          genre: newEnsembleData.genre,
         }),
       });
       const data = await response.json();
       console.log("Response:", data);
       if (response.ok) {
-        setNewEnsembleData({ name: "", description: "" });
+        setNewEnsembleData({ name: "", description: "", genre: "" });
         setErrors([]);
 
         // Redirect to front page
@@ -81,6 +83,15 @@ export function EnsembleForm() {
         placeholder="description"
         error={findError("description")}
         value={newEnsembleData.description}
+        onChange={handleOnChange}
+      />
+      <Input
+        type="text"
+        label="Genre"
+        name="genre"
+        placeholder="genre"
+        error={findError("genre")}
+        value={newEnsembleData.genre}
         onChange={handleOnChange}
       />
 

@@ -33,6 +33,9 @@ export default function Navbar() {
 
       {isAuthenticated ? (
         <div className={styles.navLinks}>
+          <Link to="/profile" className={styles.customLink}>
+            Profile
+          </Link>
           <Link to="/ensembles" className={styles.customLink}>
             Find Ensemble
           </Link>
