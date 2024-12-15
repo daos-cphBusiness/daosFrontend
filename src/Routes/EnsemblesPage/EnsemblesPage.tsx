@@ -62,16 +62,18 @@ export function EnsemblesPage() {
   return (
     <div>
       <Navbar />
-
-      <div className={styles.ensembleList}>
-        {ensembles.map((ensemble) => (
-          <EnsembleCard
-            key={ensemble._id}
-            title={ensemble.name}
-            description={ensemble.description}
-            onClick={() => handleButtonClick(ensemble._id)}
-          />
-        ))}
+      <div className="wrapper">
+        <div className={styles.ensembleList}>
+          {ensembles.map((ensemble) => (
+            <EnsembleCard
+              key={ensemble._id}
+              variant="join"
+              title={ensemble.name}
+              description={ensemble.description}
+              onClick={() => handleButtonClick(ensemble._id)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
