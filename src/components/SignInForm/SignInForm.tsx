@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 export function SignInForm() {
   const navigate = useNavigate(); // React Router's navigate hook
+  const { setUser } = useUser(); // Access the setUser function from UserContext
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -43,20 +45,16 @@ export function SignInForm() {
         // Save token to local storage
         localStorage.setItem("authToken", data.access_token);
 
-        
-                // // Decode the JWT to get user information
+        // Update the UserContext with the decoded user info
 
-                // const decodedToken: { username: string; fullName: string; email: string; etc... } = jwt_decode(data.access_token);
-
-
-
-                // // Update the UserContext with the decoded user info
-
-                // setUser({
-                //   username: decodedToken.username,
-                //   email: decodedToken.email || "No email provided",
-                // });
-        
+        setUser({
+          username: data.user.username,
+          firstName: data.user.fullName.split(" ")[0],
+          lastName: data.user.fullName.split(" ")[1],
+          email: data.user.email,
+          description: data.user.description,
+        });
+        console.log()
 
         // Reset form and errors
         setUserData({ username: "", password: "" });

@@ -51,6 +51,9 @@ export function EditProfileForm() {
         setNewProfileData({ firstName: "", lastName: "", description: "", email: "" });
         setErrors([]);
 
+        // update the global user state
+        
+
         // Redirect to profile page
         navigate("/profile");
       } else {
