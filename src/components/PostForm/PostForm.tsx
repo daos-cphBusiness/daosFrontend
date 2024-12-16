@@ -58,7 +58,7 @@ export function PostForm() {
     event.preventDefault();
 
     try {
-      const response = await fetch("/api/", {
+      const response = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

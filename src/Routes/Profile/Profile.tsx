@@ -1,69 +1,3 @@
-// import styles from "./Profile.module.css";
-// import { Button } from "../../components/Button/Button";
-// import Navbar from "../../components/Navbar/Navbar";
-// import { Link } from "react-router-dom";
-// import UserIcon from "../../assets/icons/user-icon.svg";
-
-// export function Profile() {
-//   return (
-//     <>
-//       <Navbar />
-//       <div className="wrapper">
-//         <div className="mainSection">
-//           <div className={styles.userBanner}>
-//             <div className={styles.userTitle}>
-//               <div className={styles.userIconBox}>
-//                 <img src={UserIcon} alt="icon" />
-//               </div>
-//               <h2>
-//                 {/* response1.fullName */}
-//                 Suzane Nielsen
-//               </h2>
-//             </div>
-//             <div className={styles.profileButtons}>
-//               <Link to="/edit-profile">
-//                 <Button variant="secondary" size="regular">
-//                   Edit profile
-//                 </Button>
-//               </Link>
-//               <Link to="/profile-settings">
-//                 <Button variant="secondary" size="regular">
-//                   Settings
-//                 </Button>
-//               </Link>
-//             </div>
-//           </div>
-
-//           <div className={styles.infoSection}>
-//             <h3>About</h3>
-//             <p>
-//               {/* response1.description */}
-//               Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ipsam amet,
-//               voluptatibus sint assumenda reiciendis, voluptas vitae veritatis nisi culpa quaerat
-//               tempore provident omnis quam animi officiis? Quis, autem vero!
-//             </p>
-//           </div>
-
-//           <div className={styles.infoSection}>
-//             <h3>Ensembles</h3>
-//             <div className={styles.infoSectionCards}>
-//               {/* {response2.map((ensemble) => (
-//             <EnsembleCard
-//               key={ensemble._id}
-//               variant="view"
-//               title={ensemble.name}
-//               description={ensemble.description}
-//               }
-//             />
-//           ))} */}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
 import { useEffect, useState } from "react";
 import { Button } from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
@@ -71,6 +5,7 @@ import { Link } from "react-router-dom";
 import UserIcon from "../../assets/icons/user-icon.svg";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard";
 import styles from "./Profile.module.css";
+import { PostCard } from "../../components/PostCard/PostCard";
 
 export function Profile() {
   const [user, setUser] = useState<{ fullName: string; description: string } | null>(null);
@@ -161,6 +96,12 @@ export function Profile() {
                 />
               ))}
             </div>
+          </div>
+
+          <div className={styles.infoSection}>
+            <h3>Posts</h3>
+
+            <PostCard variant="view" author="Matias" title="Post title" instrument="Piano" />
           </div>
         </div>
       </div>
