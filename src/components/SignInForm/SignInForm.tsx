@@ -43,6 +43,21 @@ export function SignInForm() {
         // Save token to local storage
         localStorage.setItem("authToken", data.access_token);
 
+        
+                // // Decode the JWT to get user information
+
+                // const decodedToken: { username: string; fullName: string; email: string; etc... } = jwt_decode(data.access_token);
+
+
+
+                // // Update the UserContext with the decoded user info
+
+                // setUser({
+                //   username: decodedToken.username,
+                //   email: decodedToken.email || "No email provided",
+                // });
+        
+
         // Reset form and errors
         setUserData({ username: "", password: "" });
         setErrors([]);

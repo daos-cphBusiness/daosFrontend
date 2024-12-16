@@ -7,6 +7,8 @@ export function SignUpForm() {
   const [newUserData, setNewUserData] = useState({
     email: "",
     username: "",
+    firstName: "",
+    lastName: "",
     password: "",
     confirmPassword: "",
   });
@@ -35,13 +37,21 @@ export function SignUpForm() {
         body: JSON.stringify({
           email: newUserData.email,
           username: newUserData.username,
+          fullName: `${newUserData.firstName} ${newUserData.lastName}`,
           password: newUserData.password,
         }),
       });
       const data = await response.json();
       console.log("Response:", data);
       if (response.ok) {
-        setNewUserData({ email: "", username: "", password: "", confirmPassword: "" });
+        setNewUserData({
+          email: "",
+          username: "",
+          firstName: "",
+          lastName: "",
+          password: "",
+          confirmPassword: "",
+        });
         setErrors([]);
       } else {
         setErrors(data.message);
@@ -76,6 +86,24 @@ export function SignUpForm() {
         placeholder="username"
         error={findError("username")}
         value={newUserData.username}
+        onChange={handleOnChange}
+      />
+      <Input
+        type="text"
+        label="First name"
+        name="firstName"
+        placeholder="first name"
+        error={findError("firstName")}
+        value={newUserData.firstName}
+        onChange={handleOnChange}
+      />
+      <Input
+        type="text"
+        label="Last name"
+        name="lastName"
+        placeholder="last name"
+        error={findError("lastName")}
+        value={newUserData.lastName}
         onChange={handleOnChange}
       />
 
