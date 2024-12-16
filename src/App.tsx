@@ -10,6 +10,7 @@ import { ProfileSettings } from "./Routes/ProfileSettings/ProfileSettings";
 import { SignIn } from "./Routes/SignIn/SignIn";
 import { SignUp } from "./Routes/SignUp/SignUp";
 import { Index } from "./components/Index/Index";
+import { CreatePost } from "./Routes/CreatePost/CreatePost";
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/create-ensemble" element={<CreateEnsemble />} />
+          <Route path="/create-post" element={<CreatePost />} />
           <Route path="/ensembles" element={<EnsemblesPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile-settings" element={<ProfileSettings />} />
