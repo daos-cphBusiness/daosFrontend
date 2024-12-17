@@ -2,8 +2,10 @@ import styles from "./SignUpForm.module.css";
 import { useState } from "react";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export function SignUpForm() {
+  const navigate = useNavigate(); // React Router's navigate hook
   const [newUserData, setNewUserData] = useState({
     email: "",
     username: "",
@@ -27,6 +29,20 @@ export function SignUpForm() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    // Reset errors before validation
+    setErrors([]);
+
+    // Check if passwords match
+    if (newUserData.password !== newUserData.confirmPassword) {
+      setErrors([
+        {
+          field: "confirmPassword",
+          message: "Passwords do not match.",
+        },
+      ]);
+      return; // Stop further execution
+    }
 
     try {
       const response = await fetch("/api/users", {
@@ -53,6 +69,9 @@ export function SignUpForm() {
           confirmPassword: "",
         });
         setErrors([]);
+
+        // Redirect to sign-in
+        navigate("/sign-in");
       } else {
         setErrors(data.message);
       }
@@ -81,7 +100,7 @@ export function SignUpForm() {
 
       <Input
         type="text"
-        label="Username"
+        label="User name"
         name="username"
         placeholder="username"
         error={findError("username")}
@@ -108,12 +127,41 @@ export function SignUpForm() {
       />
 
       <Input
+        type="text"
+        label="First name"
+        name="firstName"
+        placeholder="first name"
+        error={findError("firstName")}
+        value={newUserData.firstName}
+        onChange={handleOnChange}
+      />
+
+      <Input
+        type="text"
+        label="Last name"
+        name="lastName"
+        placeholder="last name"
+        error={findError("lastName")}
+        value={newUserData.lastName}
+        onChange={handleOnChange}
+      />
+
+      <Input
         type="password"
         label="Password"
         name="password"
         error={findError("password")}
         placeholder="password"
         value={newUserData.password}
+        onChange={handleOnChange}
+      />
+      <Input
+        type="password"
+        label="Confirm password"
+        name="confirmPassword"
+        error={findError("confirmPassword")}
+        placeholder="confirm password"
+        value={newUserData.confirmPassword}
         onChange={handleOnChange}
       />
 

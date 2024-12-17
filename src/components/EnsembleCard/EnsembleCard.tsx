@@ -13,7 +13,7 @@ export function EnsembleCard(props: EnsembleCardProps) {
   const { variant, title, description, onClick } = props;
 
   return (
-    <div className={styles.ensembleCard}>
+    <div className={styles.cardContainer}>
       <div className={styles.cardHead}>
         <h2 className={styles.title}>{title}</h2>
         {/* <img src={InstrumentIcon} alt="icon" /> */}

@@ -60,8 +60,8 @@ export function SignInForm() {
         setUserData({ username: "", password: "" });
         setErrors([]);
 
-        // Redirect to front page
-        navigate("/");
+        // Redirect to profile page
+        navigate("/profile");
       } else {
         if (Array.isArray(data.message)) {
           setErrors(data.message);
