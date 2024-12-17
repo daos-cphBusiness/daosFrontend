@@ -7,11 +7,47 @@ import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard";
 import styles from "./Profile.module.css";
 import { PostCard } from "../../components/PostCard/PostCard";
 
+// after logging the data of the response we declare new types to make the state of each data type safe
+
+type Instrument = {
+  name: string;
+  genre: string[];
+};
+
+type User = {
+  _id: string;
+  fullName: string;
+  description: string;
+  username: string;
+  password: string;
+  email: string;
+  instrument: Instrument[];
+};
+
+type Ensemble = {
+  _id: string;
+  name: string;
+  description: string;
+  genre: string[];
+  users: string[];
+};
+
+type Post = {
+  _id: string;
+  title: string;
+  description: string;
+  user: User;
+  instrument: Instrument[];
+};
+
 export function Profile() {
   const [user, setUser] = useState<{ fullName: string; description: string } | null>(null);
-  const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
-    []
-  );
+  // const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
+  //   []
+  // );
+  const [ensembles, setEnsembles] = useState<Ensemble[]>([]);
+
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,24 +57,37 @@ export function Profile() {
           alert("User not authenticated");
           throw new Error("User not authenticated");
         }
-        const [userData, ensemblesData] = await Promise.all([
+        const [userData, ensemblesData, postData] = await Promise.all([
           fetch(`/api/users/user`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`, // Include token in the Authorization header
+              Authorization: `Bearer ${token}`,
             },
           }).then((res) => res.json()),
           fetch(`/api/ensembles/myEnsembles`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`, // Include token in the Authorization header
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((res) => res.json()),
+          fetch(`/api/posts/myPosts`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
           }).then((res) => res.json()),
         ]);
+
+        // logging the data here helps declare new types to make the state of each data type safe
+
         console.log(userData);
         console.log(ensemblesData);
+        console.log(postData);
+        
+        setPosts(postData);
         setUser(userData);
         setEnsembles(ensemblesData);
       } catch (error) {
@@ -50,7 +99,7 @@ export function Profile() {
   }, []);
 
   if (!user) {
-    return <div>Loading...</div>; // Show loading while data is fetched
+    return <div>Loading...</div>;
   }
 
   return (
@@ -100,8 +149,19 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>Posts</h3>
-
-            <PostCard variant="view" author="Matias" title="Post title" instrument="Piano" />
+            <div className={styles.infoSectionCards}>
+              {posts?.map((post) => (
+                <PostCard
+                  variant="view"
+                  key={post._id}
+                  title={post.title}
+                  author={post.user.fullName} // Updated to access populated user
+                  instrument={
+                    post.instrument.length > 0 ? post.instrument[0].name : "No instrument"
+                  }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

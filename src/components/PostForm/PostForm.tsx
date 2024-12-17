@@ -58,16 +58,24 @@ export function PostForm() {
     event.preventDefault();
 
     try {
+      const token = localStorage.getItem("authToken"); // Retrieve JWT from local storage
+      if (!token) {
+        alert("User not authenticated");
+        throw new Error("User not authenticated");
+      }
+
       const response = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include token in the Authorization header
         },
         body: JSON.stringify({
           ensembleName: newPostData.ensembleName,
           title: newPostData.title,
           description: newPostData.description,
           genre: newPostData.genre,
+          instrument: newPostData.instrument,
         }),
       });
       const data = await response.json();
@@ -82,7 +90,7 @@ export function PostForm() {
         });
         setErrors([]);
 
-        // Redirect to front page
+        // Redirect to profile
         navigate("/profile");
       } else {
         if (Array.isArray(data.message)) {
@@ -119,6 +127,7 @@ export function PostForm() {
             </option>
           ))}
         </select>
+        {/* <span className={styles.span}>{error.instrument}</span>       */}
       </div>
 
       <Input
