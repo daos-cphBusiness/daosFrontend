@@ -11,6 +11,7 @@ export type User = {
 
 export type Instrument = [
   {
+    _id?: string;
     name: string;
     genre: string[];
   }
