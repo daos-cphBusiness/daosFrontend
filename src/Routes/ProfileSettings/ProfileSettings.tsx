@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "./ProfileSettings.module.css";
+import { useUser } from "../../context/UserContext";
 
 export function ProfileSettings() {
+  const { setUser } = useUser();
   const navigate = useNavigate();
 
   async function handleOnDelete(): Promise<void> {
@@ -26,9 +28,10 @@ export function ProfileSettings() {
         });
 
         if (response.ok) {
-          console.log("Profile deleted successfully.");
+          localStorage.removeItem("authToken");
+          setUser(null);
           alert("Profile deleted successfully.");
-          navigate("/sign-in");
+          navigate("/");
         } else {
           console.error("Failed to delete profile:", response.statusText);
           alert("Failed to delete profile. Please try again.");
