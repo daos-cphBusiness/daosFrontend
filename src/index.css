@@ -1,66 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap");
 
-:root {
-  --white: #ffffff;
-  --red: #bf1e2f;
-  --blue: #353a5d;
-  --orange: #ff9b19;
-  --gray: #777777;
-  --light-gray: #dddddd;
-  --lighter-gray: #f9f9f9;
-  --light-blue: #4a4e6e;
-}
-
-/* Font classes */
-.oswald-light {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200; /* Light */
-  font-style: normal;
-}
-
-.oswald-regular {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-.oswald-medium {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
-
-.oswald-bold {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
-.montserrat-light {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300; /* Light */
-  font-style: normal;
-}
-
-.montserrat-regular {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-.montserrat-bold {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
 /* CSS Reset */
 html,
 body,
@@ -191,4 +130,75 @@ q::after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --red: #bf1e2f;
+  --blue: #353a5d;
+  --orange: #ff9b19;
+  --gray: #777777;
+  --light-gray: #dddddd;
+  --lighter-gray: #f9f9f9;
+  --light-blue: #4a4e6e;
+}
+
+/* Font classes */
+.oswald-light {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200; /* Light */
+  font-style: normal;
+}
+
+.oswald-regular {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+.oswald-medium {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+.oswald-bold {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+.montserrat-light {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+.montserrat-bold {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+}
+
+.mainSection {
+  grid-column: 2;
+  margin-bottom: 100px;
 }

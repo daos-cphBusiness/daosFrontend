@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20">
+  <g id="delete-icon" transform="translate(-4 -2)">
+    <path id="Path_200" data-name="Path 200" d="M10,2,9,3H4V5H5V20a1.943,1.943,0,0,0,2,2H17a1.937,1.937,0,0,0,2-2V5h1V3H15L14,2ZM7,5H17V20H7ZM9,7V18h2V7Zm4,0V18h2V7Zm0,0" fill="#bf1e2e"/>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px #00000029; /* Slight shadow for form container */
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--blue);
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+}
+.cardInfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cardInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.instrument {
+  padding-left: 4px;
+}
+
+.cta {
+  align-self: flex-end;
+}

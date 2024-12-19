@@ -1,6 +1,6 @@
 .commonButton {
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   border-radius: 10px;
   box-shadow: 0px 2px 4px #00000029;
@@ -12,6 +12,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.regularSize {
+  width: 250px;
 }
 
 .defaultSize {
@@ -48,5 +52,20 @@
 
 .secondaryButton:active {
   background-color: var(--light-gray);
+  transform: scale(0.98);
+}
+.deleteButton {
+  background-color: var(--white);
+  color: var(--red);
+  border: 1px solid var(--light-gray);
+}
+
+.deleteButton:hover {
+  background-color: var(--lighter-gray);
+}
+
+.deleteButton:active {
+  background-color: var(--red);
+  color: var(--white);
   transform: scale(0.98);
 }

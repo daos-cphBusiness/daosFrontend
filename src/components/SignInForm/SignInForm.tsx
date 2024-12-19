@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 export function SignInForm() {
   const navigate = useNavigate(); // React Router's navigate hook
+  const { setUser } = useUser(); // Access the setUser function from UserContext
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -43,12 +45,21 @@ export function SignInForm() {
         // Save token to local storage
         localStorage.setItem("authToken", data.access_token);
 
+        // Update the UserContext
+        setUser({
+          username: data.user.username,
+          fullName: data.user.fullName,
+          email: data.user.email,
+          description: data.user.description,
+          instrument: data.user.instrument,
+        });
+
         // Reset form and errors
         setUserData({ username: "", password: "" });
         setErrors([]);
 
-        // Redirect to front page
-        navigate("/");
+        // Redirect to profile page
+        navigate("/profile");
       } else {
         if (Array.isArray(data.message)) {
           setErrors(data.message);
@@ -62,7 +73,7 @@ export function SignInForm() {
   };
 
   const findError = (fieldName: string) => {
-    console.log("errors", errors);
+    // console.log("errors", errors);
     return errors?.find((error: { field: string }) => error.field === fieldName)?.message;
   };
 

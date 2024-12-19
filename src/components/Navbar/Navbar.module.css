@@ -2,20 +2,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px 30px;
+  /* margin-top: 10px; */
   background-color: var(--white);
   border: 1px solid var(--light-gray);
+  margin-bottom: 100px;
 }
 
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .logo {
   font-family: "Oswald", sans-serif;
   font-weight: 500;
   color: #bf1e2e;
-  font-size: 24px;
+  font-size: 27px;
   text-decoration: none;
 }
-
-.buttons {
+.logoText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--blue);
+}
+.navLinks {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  align-items: center;
+}
+
+.customLink {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--blue);
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }

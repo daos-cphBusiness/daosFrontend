@@ -1,7 +1,0 @@
-.test {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 10rem;
-  align-content: center;
-}
