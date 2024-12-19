@@ -3,22 +3,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
+import { useUser } from "../../context/UserContext";
 
 export function EditProfileForm() {
-  const navigate = useNavigate(); // React Router's navigate hook
+  const navigate = useNavigate();
+  const { setUser, user } = useUser(); // Get the setUser function from UserContext
   const [newProfileData, setNewProfileData] = useState({
-    firstName: "",
-    lastName: "",
-    description: "",
-    email: "",
+    firstName: user?.fullName.split(" ")[0],
+    lastName: user?.fullName.split(" ")[1],
+    description: user?.description,
+    email: user?.email,
   });
 
-  const [errors, setErrors] = useState<
-    Array<{
-      field: string;
-      message: string;
-    }>
-  >([]);
+  const [errors, setErrors] = useState<Array<{ field: string; message: string }>>([]);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -43,13 +40,23 @@ export function EditProfileForm() {
         body: JSON.stringify({
           fullName: `${newProfileData.firstName} ${newProfileData.lastName}`,
           email: newProfileData.email,
+          description: newProfileData.description,
         }),
       });
       const data = await response.json();
       console.log("Response:", data);
       if (response.ok) {
+        // Reset form and errors
         setNewProfileData({ firstName: "", lastName: "", description: "", email: "" });
         setErrors([]);
+
+        // Update the global user state using setUser
+        setUser({
+          username: data.username,
+          fullName: data.fullName,
+          email: data.email,
+          description: data.description,
+        });
 
         // Redirect to profile page
         navigate("/profile");

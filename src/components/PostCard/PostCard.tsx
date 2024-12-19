@@ -7,7 +7,7 @@ import AuthorIcon from "../../assets/icons/author-icon.svg";
 export type PostCardProps = {
   variant: "join" | "view";
   title: string;
-  author: string;
+  author: string | undefined;
   instrument: string;
   onClick?: () => void;
 };

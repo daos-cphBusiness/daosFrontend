@@ -1,0 +1,67 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto; /* Center the form on the page */
+  margin-bottom: 100px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px #00000029; /* Slight shadow for form container */
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.h1 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 30px;
+  color: var(--red);
+
+  margin-bottom: 10px;
+  align-self: flex-start;
+  padding: 25px;
+}
+
+.dropdownContainer {
+  width: 346px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.instrumentDropdown {
+  width: 346px;
+  height: 50px;
+  padding: 0 10px; /* Padding for placeholder alignment */
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #353a5d;
+  box-shadow: 0px 2px 4px #00000029;
+  transition: border-color 0.2s ease;
+  appearance: none; /* Removes default styles in browsers */
+  cursor: pointer;
+
+  /* Make the dropdown scrollable */
+  max-height: 50px; /* Limit the height of the dropdown */
+  overflow-y: auto; /* Enable scrolling when there are too many options */
+  /* position: relative; */
+}
+
+.instrumentDropdown:focus {
+  outline: none;
+  border-color: #aaa;
+}
+
+.instrumentDropdown option {
+  color: var(--white);
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.instrumentDropdown option:disabled {
+  color: #aaaaaa;
+  font-style: italic;
+}

@@ -107,7 +107,6 @@ export function SignUpForm() {
         value={newUserData.username}
         onChange={handleOnChange}
       />
-
       <Input
         type="text"
         label="First name"
@@ -117,7 +116,6 @@ export function SignUpForm() {
         value={newUserData.firstName}
         onChange={handleOnChange}
       />
-
       <Input
         type="text"
         label="Last name"

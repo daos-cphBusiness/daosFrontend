@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 export function ChangePasswordForm() {
   const navigate = useNavigate();
   const [passwordData, setPasswordData] = useState({
-    password: "",
+    oldPassword: "",
+    newPassword: "",
     confirmPassword: "",
   });
 
@@ -18,31 +19,31 @@ export function ChangePasswordForm() {
     setPasswordData({ ...passwordData, [name]: value });
   };
 
-  const validateForm = () => {
-    const validationErrors = [];
-    if (passwordData.password.length < 6) {
-      validationErrors.push({
-        field: "password",
-        message: "Password must be at least 6 characters long.",
-      });
-    }
-    if (passwordData.password !== passwordData.confirmPassword) {
-      validationErrors.push({
-        field: "confirmPassword",
-        message: "Passwords do not match.",
-      });
-    }
-    return validationErrors;
-  };
+  // const validateForm = () => {
+  //   const validationErrors = [];
+  //   if (passwordData.newPassword.length < 6) {
+  //     validationErrors.push({
+  //       field: "newPassword",
+  //       message: "Password must be at least 6 characters long.",
+  //     });
+  //   }
+  //   if (passwordData.newPassword !== passwordData.confirmPassword) {
+  //     validationErrors.push({
+  //       field: "confirmPassword",
+  //       message: "Passwords do not match.",
+  //     });
+  //   }
+  //   return validationErrors;
+  // };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const validationErrors = validateForm();
+    // const validationErrors = validateForm();
 
-    if (validationErrors.length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+    // if (validationErrors.length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
 
     try {
       const token = localStorage.getItem("authToken"); // Retrieve JWT from local storage
@@ -57,19 +58,30 @@ export function ChangePasswordForm() {
           Authorization: `Bearer ${token}`, // Include token in the Authorization header
         },
         body: JSON.stringify({
-          password: passwordData.password,
+          oldPassword: passwordData.oldPassword,
+          newPassword: passwordData.newPassword,
         }),
       });
 
       const data = await response.json();
       if (response.ok) {
+        alert("Password updated successfully");
         console.log("Password updated successfully:", data);
-        setPasswordData({ password: "", confirmPassword: "" });
+        setPasswordData({ oldPassword: "", newPassword: "", confirmPassword: "" });
         setErrors([]);
         navigate("/profile");
       } else {
-        setErrors([{ field: "form", message: data.message || "Error updating password." }]);
+        if (Array.isArray(data.message)) {
+          setErrors(data.message);
+          return;
+        }
+        console.log(data);
+        alert(`${data.message}`);
       }
+
+      // else {
+      //   setErrors([{ field: "form", message: data.message || "Error updating newPassword." }]);
+      // }
     } catch (error) {
       console.error("Error updating password:", error);
       // setErrors([{ field: "form", message: "An error occurred. Please try again later." }]);
@@ -78,6 +90,7 @@ export function ChangePasswordForm() {
   };
 
   const findError = (fieldName: string) => {
+    console.log(errors);
     return errors.find((error) => error.field === fieldName)?.message;
   };
 
@@ -87,12 +100,21 @@ export function ChangePasswordForm() {
 
       <Input
         type="password"
-        label="Password"
-        name="password"
-        placeholder="Enter new password"
-        value={passwordData.password}
+        label="Current Password"
+        name="oldPassword"
+        placeholder="Enter current password"
+        value={passwordData.oldPassword}
         onChange={handleOnChange}
-        error={findError("password")}
+        error={findError("oldPassword")}
+      />
+      <Input
+        type="password"
+        label="New password"
+        name="newPassword"
+        placeholder="Enter new password"
+        value={passwordData.newPassword}
+        onChange={handleOnChange}
+        error={findError("newPassword")}
       />
 
       <Input
