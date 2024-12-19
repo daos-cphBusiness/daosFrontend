@@ -45,16 +45,14 @@ export function SignInForm() {
         // Save token to local storage
         localStorage.setItem("authToken", data.access_token);
 
-        // Update the UserContext with the decoded user info
-
+        // Update the UserContext
         setUser({
           username: data.user.username,
-          firstName: data.user.fullName.split(" ")[0],
-          lastName: data.user.fullName.split(" ")[1],
+          fullName: data.user.fullName,
           email: data.user.email,
           description: data.user.description,
+          instrument: data.user.instrument,
         });
-        console.log()
 
         // Reset form and errors
         setUserData({ username: "", password: "" });
@@ -75,7 +73,7 @@ export function SignInForm() {
   };
 
   const findError = (fieldName: string) => {
-    console.log("errors", errors);
+    // console.log("errors", errors);
     return errors?.find((error: { field: string }) => error.field === fieldName)?.message;
   };
 

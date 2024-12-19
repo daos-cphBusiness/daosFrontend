@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserIcon from "../../assets/icons/user-icon.svg";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard";
 import styles from "./Profile.module.css";
 import { PostCard } from "../../components/PostCard/PostCard";
+import { User, useUser } from "../../context/UserContext";
 
 // after logging the data of the response we declare new types to make the state of each data type safe
 
-type Instrument = {
-  name: string;
-  genre: string[];
-};
+// type Instrument = {
+//   name: string;
+//   genre: string[];
+// };
 
-type User = {
-  _id: string;
-  fullName: string;
-  description: string;
-  username: string;
-  password: string;
-  email: string;
-  instrument: Instrument[];
-};
+// type User = {
+//   _id: string;
+//   fullName: string;
+//   description: string;
+//   username: string;
+//   password: string;
+//   email: string;
+//   instruments: Instrument[];
+// };
 
 type Ensemble = {
   _id: string;
@@ -37,19 +38,23 @@ type Post = {
   title: string;
   description: string;
   user: User;
-  instrument: Instrument[];
+  instrument: string;
 };
 
 export function Profile() {
-  const [user, setUser] = useState<{ fullName: string; description: string } | null>(null);
-  // const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
-  //   []
-  // );
+  const { user } = useUser(); // Access user from context
+  const navigate = useNavigate(); // Redirect if user is not logged in
   const [ensembles, setEnsembles] = useState<Ensemble[]>([]);
 
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
+    // Redirect to login if user is not authenticated
+    if (!user) {
+      navigate("/sign-in");
+      return;
+    }
+
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("authToken"); // Retrieve JWT from local storage
@@ -57,14 +62,7 @@ export function Profile() {
           alert("User not authenticated");
           throw new Error("User not authenticated");
         }
-        const [userData, ensemblesData, postData] = await Promise.all([
-          fetch(`/api/users/user`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((res) => res.json()),
+        const [ensemblesData, postData] = await Promise.all([
           fetch(`/api/ensembles/myEnsembles`, {
             method: "GET",
             headers: {
@@ -81,14 +79,13 @@ export function Profile() {
           }).then((res) => res.json()),
         ]);
 
-        // logging the data here helps declare new types to make the state of each data type safe
+        // logging the data to declare new types based on them and make the state of each data type safe
 
-        console.log(userData);
-        console.log(ensemblesData);
-        console.log(postData);
-        
+        // console.log(userData);
+        // console.log(ensemblesData);
+        // console.log(postData);
+
         setPosts(postData);
-        setUser(userData);
         setEnsembles(ensemblesData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -96,7 +93,7 @@ export function Profile() {
     };
 
     fetchData();
-  }, []);
+  }, [user, navigate]); // the effect re-runs whenever the user or navigate value changes
 
   if (!user) {
     return <div>Loading...</div>;
@@ -134,6 +131,18 @@ export function Profile() {
           </div>
 
           <div className={styles.infoSection}>
+            <h3>Instruments</h3>
+            <p>
+              {user.instrument?.map((instrument) => (
+                <div>
+                  <p>{instrument.name}</p>
+                  <p>{instrument.genre}</p>
+                </div>
+              ))}
+            </p>
+          </div>
+
+          <div className={styles.infoSection}>
             <h3>Ensembles</h3>
             <div className={styles.infoSectionCards}>
               {ensembles?.map((ensemble) => (
@@ -155,10 +164,8 @@ export function Profile() {
                   variant="view"
                   key={post._id}
                   title={post.title}
-                  author={post.user.fullName} // Updated to access populated user
-                  instrument={
-                    post.instrument.length > 0 ? post.instrument[0].name : "No instrument"
-                  }
+                  author={post.user?.fullName} // Updated to access populated user
+                  instrument={post.instrument.length > 0 ? post.instrument : "No instrument"}
                 />
               ))}
             </div>

@@ -127,26 +127,6 @@ export function SignUpForm() {
       />
 
       <Input
-        type="text"
-        label="First name"
-        name="firstName"
-        placeholder="first name"
-        error={findError("firstName")}
-        value={newUserData.firstName}
-        onChange={handleOnChange}
-      />
-
-      <Input
-        type="text"
-        label="Last name"
-        name="lastName"
-        placeholder="last name"
-        error={findError("lastName")}
-        value={newUserData.lastName}
-        onChange={handleOnChange}
-      />
-
-      <Input
         type="password"
         label="Password"
         name="password"

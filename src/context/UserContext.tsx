@@ -1,13 +1,20 @@
 import { createContext, useState, ReactNode, useContext } from "react";
 
 // Define the shape of the user object
-type User = {
+export type User = {
   username: string;
-  firstName: string;
-  lastName: string;
+  fullName: string;
   description: string;
   email: string;
+  instrument?: Instrument;
 } | null;
+
+export type Instrument = [
+  {
+    name: string;
+    genre: string[];
+  }
+];
 
 type UserContextType = {
   user: User;
