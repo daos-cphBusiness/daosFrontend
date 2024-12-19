@@ -155,7 +155,7 @@ export function Profile() {
                   key={post._id}
                   title={post.title}
                   author={post.user?.fullName} // Updated to access populated user
-                  instrument={post.instrument?.length > 0 ? post.instrument : "No instrument"}
+                  instrument={post.instrument}
                 />
               ))}
             </div>
