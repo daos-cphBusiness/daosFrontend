@@ -12,6 +12,7 @@ import { SignUp } from "./Routes/SignUp/SignUp";
 import { Index } from "./components/Index/Index";
 import { CreatePost } from "./Routes/CreatePost/CreatePost";
 import { AddIntrument } from "./Routes/AddIntrument/AddInstrument";
+import { MusiciansPage } from "./Routes/MusiciansPage/MusiciansPage";
 
 export function App() {
   return (
@@ -24,6 +25,7 @@ export function App() {
           <Route path="/create-ensemble" element={<CreateEnsemble />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/ensembles" element={<EnsemblesPage />} />
+          <Route path="/musicians" element={<MusiciansPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile-settings" element={<ProfileSettings />} />
           <Route path="/edit-profile" element={<EditProfile />} />
