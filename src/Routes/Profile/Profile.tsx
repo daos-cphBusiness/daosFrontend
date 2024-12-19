@@ -127,14 +127,13 @@ export function Profile() {
             <Button size="auto" variant="secondary" onClick={handleAddInstrument}>
               Add instrumnet
             </Button>
-            <p>
-              {user.instrument?.map((instrument) => (
-                <div>
-                  <p>{instrument.name}</p>
-                  <p>{instrument.genre}</p>
-                </div>
-              ))}
-            </p>
+
+            {user.instrument?.map((instrument) => (
+              <div key={instrument._id}>
+                <p>{instrument.name}</p>
+                <p>{instrument.genre}</p>
+              </div>
+            ))}
           </div>
 
           <div className={styles.infoSection}>
@@ -163,7 +162,7 @@ export function Profile() {
                   key={post._id}
                   title={post.title}
                   author={post.user?.fullName} // Updated to access populated user
-                  instrument={post.instrument.length > 0 ? post.instrument : "No instrument"}
+                  instrument={post.instrument?.length > 0 ? post.instrument : "No instrument"}
                 />
               ))}
             </div>
