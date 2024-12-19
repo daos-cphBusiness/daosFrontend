@@ -6,17 +6,11 @@ import UserIcon from "../../assets/icons/user-icon.svg";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard";
 import styles from "./Profile.module.css";
 import { PostCard } from "../../components/PostCard/PostCard";
-import { User, useUser } from "../../context/UserContext";
+import { useUser } from "../../context/UserContext";
+import { User, Ensemble } from "../../types/global";
 
 // after logging the data of the response we declare new types to make the state of each data type safe
 
-type Ensemble = {
-  _id: string;
-  name: string;
-  description: string;
-  genre: string[];
-  users: string[];
-};
 
 type Post = {
   _id: string;
@@ -84,13 +78,6 @@ export function Profile() {
     return <div>Loading...</div>;
   }
 
-  const handleAddInstrument = () => {
-    navigate("/add-intrument");
-  };
-  const handleCreatePost = () => {
-    navigate("/create-post");
-  };
-
   return (
     <>
       <Navbar />
@@ -124,9 +111,13 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>Instruments</h3>
-            <Button size="auto" variant="secondary" onClick={handleAddInstrument}>
-              Add instrumnet
-            </Button>
+
+            <Link to="/add-intrument">
+              <Button variant="secondary" size="auto">
+                {" "}
+                Add instrument
+              </Button>
+            </Link>
 
             {user.instrument?.map((instrument) => (
               <div key={instrument._id}>
@@ -152,9 +143,11 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>Posts</h3>
-            <Button size="auto" variant="secondary" onClick={handleCreatePost}>
-              Create a post
-            </Button>
+            <Link to="/create-post">
+              <Button variant="secondary" size="auto">
+                Add post
+              </Button>
+            </Link>
             <div className={styles.infoSectionCards}>
               {posts?.map((post) => (
                 <PostCard
@@ -162,7 +155,7 @@ export function Profile() {
                   key={post._id}
                   title={post.title}
                   author={post.user?.fullName} // Updated to access populated user
-                  instrument={post.instrument?.length > 0 ? post.instrument : "No instrument"}
+                  instrument={post.instrument}
                 />
               ))}
             </div>

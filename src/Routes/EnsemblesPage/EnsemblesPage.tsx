@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard.tsx";
 import Navbar from "../../components/Navbar/Navbar.tsx";
 
+
+
 export function EnsemblesPage() {
   const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
     []
