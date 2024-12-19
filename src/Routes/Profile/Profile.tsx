@@ -10,21 +10,6 @@ import { User, useUser } from "../../context/UserContext";
 
 // after logging the data of the response we declare new types to make the state of each data type safe
 
-// type Instrument = {
-//   name: string;
-//   genre: string[];
-// };
-
-// type User = {
-//   _id: string;
-//   fullName: string;
-//   description: string;
-//   username: string;
-//   password: string;
-//   email: string;
-//   instruments: Instrument[];
-// };
-
 type Ensemble = {
   _id: string;
   name: string;
@@ -99,6 +84,13 @@ export function Profile() {
     return <div>Loading...</div>;
   }
 
+  const handleAddInstrument = () => {
+    navigate("/add-intrument");
+  };
+  const handleCreatePost = () => {
+    navigate("/create-post");
+  };
+
   return (
     <>
       <Navbar />
@@ -132,6 +124,9 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>Instruments</h3>
+            <Button size="auto" variant="secondary" onClick={handleAddInstrument}>
+              Add instrumnet
+            </Button>
             <p>
               {user.instrument?.map((instrument) => (
                 <div>
@@ -158,6 +153,9 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>Posts</h3>
+            <Button size="auto" variant="secondary" onClick={handleCreatePost}>
+              Create a post
+            </Button>
             <div className={styles.infoSectionCards}>
               {posts?.map((post) => (
                 <PostCard
