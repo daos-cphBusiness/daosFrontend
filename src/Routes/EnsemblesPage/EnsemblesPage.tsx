@@ -49,17 +49,22 @@ export function EnsemblesPage() {
         },
       });
 
-      if (!response.ok) {
-        alert("Failed to link user to ensemble");
-        throw new Error("Failed to link user to ensemble");
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        alert("You have joined the ensemble");
+        console.log("User linked successfully:", data);
       }
 
-      const result = await response.json();
-      console.log("User linked successfully:", result);
+      if (!response.ok) {
+        alert(`${data.message}`);
+      }
+      
     } catch (error) {
       console.error("Error linking user to ensemble:", error);
     }
   };
+
 
   return (
     <div>
