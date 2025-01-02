@@ -56,6 +56,7 @@ export function EditProfileForm() {
           fullName: data.fullName,
           email: data.email,
           description: data.description,
+          instrument: data.instrument,
         });
 
         // Redirect to profile page
