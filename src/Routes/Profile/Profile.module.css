@@ -30,6 +30,13 @@ p {
   gap: 20px;
   padding-top: 100px;
 }
+
+.infoSectionCards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+}
 .userBanner {
   grid-column: 2;
   display: flex;
@@ -61,4 +68,25 @@ p {
 .profileButtons {
   display: flex;
   gap: 20px;
+}
+
+.sectionContent {
+  padding: 20px 0 0 100px;
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+}
+.instrument {
+  padding-bottom: 20px;
+}
+
+.instrumentName {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-left: 30px;
 }
