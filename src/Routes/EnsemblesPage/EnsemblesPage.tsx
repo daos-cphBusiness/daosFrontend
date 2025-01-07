@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard.tsx";
 import Navbar from "../../components/Navbar/Navbar.tsx";
 
-
-
 export function EnsemblesPage() {
   const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
     []
@@ -55,6 +53,7 @@ export function EnsemblesPage() {
       }
 
       const result = await response.json();
+      alert(`You are now part of ${result.name}`);
       console.log("User linked successfully:", result);
     } catch (error) {
       console.error("Error linking user to ensemble:", error);
@@ -65,6 +64,7 @@ export function EnsemblesPage() {
     <div>
       <Navbar />
       <div className="wrapper">
+        <h1>Ensembles</h1>
         <div className={styles.ensembleList}>
           {ensembles.map((ensemble) => (
             <EnsembleCard
