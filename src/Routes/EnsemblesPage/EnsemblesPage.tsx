@@ -47,9 +47,15 @@ export function EnsemblesPage() {
         },
       });
 
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        alert("You have joined the ensemble");
+        console.log("User linked successfully:", data);
+      }
+
       if (!response.ok) {
-        alert("Failed to link user to ensemble");
-        throw new Error("Failed to link user to ensemble");
+        alert(`${data.message}`);
       }
 
       const result = await response.json();
@@ -59,6 +65,7 @@ export function EnsemblesPage() {
       console.error("Error linking user to ensemble:", error);
     }
   };
+
 
   return (
     <div>
