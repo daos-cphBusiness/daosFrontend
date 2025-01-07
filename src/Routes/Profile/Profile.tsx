@@ -11,7 +11,6 @@ import { User, Ensemble } from "../../types/global";
 
 // after logging the data of the response we declare new types to make the state of each data type safe
 
-
 type Post = {
   _id: string;
   title: string;
@@ -106,58 +105,81 @@ export function Profile() {
 
           <div className={styles.infoSection}>
             <h3>About</h3>
-            <p>{user.description}</p>
+            <div className={styles.sectionContent}>
+              <p>{user.description}</p>
+            </div>
           </div>
 
           <div className={styles.infoSection}>
-            <h3>Instruments</h3>
+            <div className={styles.sectionTitle}>
+              <h3>Instruments</h3>
 
-            <Link to="/add-intrument">
-              <Button variant="secondary" size="auto">
-                {" "}
-                Add instrument
-              </Button>
-            </Link>
+              <Link to="/add-intrument">
+                <Button variant="secondary" size="auto">
+                  Add instrument
+                </Button>
+              </Link>
+            </div>
 
-            {user.instrument?.map((instrument) => (
-              <div key={instrument._id}>
-                <p>{instrument.name}</p>
-                <p>{instrument.genre}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.infoSection}>
-            <h3>Ensembles</h3>
-            <div className={styles.infoSectionCards}>
-              {ensembles?.map((ensemble) => (
-                <EnsembleCard
-                  key={ensemble._id}
-                  variant="view"
-                  title={ensemble.name}
-                  description={ensemble.description}
-                />
+            <div className={styles.sectionContent}>
+              {user.instrument?.map((instrument) => (
+                <div className={styles.instrument} key={instrument._id}>
+                  <p className={styles.instrumentName}>{instrument.name}</p>
+                  <ul>
+                    {instrument.genre.map((g) => (
+                      <li>{g}</li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
 
           <div className={styles.infoSection}>
-            <h3>Posts</h3>
-            <Link to="/create-post">
-              <Button variant="secondary" size="auto">
-                Add post
-              </Button>
-            </Link>
-            <div className={styles.infoSectionCards}>
-              {posts?.map((post) => (
-                <PostCard
-                  variant="view"
-                  key={post._id}
-                  title={post.title}
-                  author={post.user?.fullName} // Updated to access populated user
-                  instrument={post.instrument}
-                />
-              ))}
+            <div className={styles.sectionTitle}>
+              <h3>Ensembles</h3>
+              <Link to="/ensembles">
+                <Button variant="secondary" size="auto">
+                  Find ensembles
+                </Button>
+              </Link>
+            </div>
+            <div className={styles.sectionContent}>
+              <div className={styles.infoSectionCards}>
+                {ensembles?.map((ensemble) => (
+                  <EnsembleCard
+                    key={ensemble._id}
+                    variant="view"
+                    title={ensemble.name}
+                    description={ensemble.description}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.infoSection}>
+            <div className={styles.sectionTitle}>
+              <h3>Posts</h3>
+              <Link to="/create-post">
+                <Button variant="secondary" size="auto">
+                  Add post
+                </Button>
+              </Link>
+            </div>
+
+            <div className={styles.sectionContent}>
+              <div className={styles.infoSectionCards}>
+                {posts?.map((post) => (
+                  <PostCard
+                    variant="view"
+                    key={post._id}
+                    title={post.title}
+                    author={post.user?.fullName} 
+                    instrument={post.instrument}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
