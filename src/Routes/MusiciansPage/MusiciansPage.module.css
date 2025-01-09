@@ -2,6 +2,12 @@ h1 {
   padding-bottom: 100px;
 }
 
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .searchBar {
   padding: 8px;
   font-size: 16px;
@@ -20,4 +26,14 @@ h1 {
 .sectionTitle {
   display: flex;
   justify-content: space-between;
+}
+
+.searchButton {
+  cursor: pointer;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 35px;
+  background-color: var(--lighter-gray);
 }

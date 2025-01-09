@@ -65,3 +65,24 @@
   color: #aaaaaa;
   font-style: italic;
 }
+
+.genreList {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.genreItem {
+  display: flex;
+  gap: 10px;
+}
+
+.removeButton {
+  cursor: pointer;
+  border: solid 1px var(--grey);
+  border-radius: 10px;
+}

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "./ProfileSettings.module.css";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../context/useUser";
 
 export function ProfileSettings() {
   const { setUser } = useUser();

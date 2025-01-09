@@ -92,6 +92,7 @@ export function InstrumentForm() {
       if (response.ok) {
         setNewInstrumentData({ instrument: "", genre: [] });
         setErrors([]);
+        
         navigate("/profile");
       } else {
         if (Array.isArray(data.message)) {
@@ -132,7 +133,7 @@ export function InstrumentForm() {
       </div>
 
       <div className={styles.dropdownContainer}>
-        <select className={styles.genreDropdown} value="" onChange={handleGenreChange}>
+        <select className={styles.instrumentDropdown} value="" onChange={handleGenreChange}>
           <option value="" disabled>
             Select a genre
           </option>
@@ -148,14 +149,14 @@ export function InstrumentForm() {
       <ul className={styles.genreList}>
         {newInstrumentData.genre.map((g, index) => (
           <li key={index} className={styles.genreItem}>
-            {g}
             <button
               type="button"
               className={styles.removeButton}
               onClick={() => handleRemoveGenre(g)}
             >
-              X
+              x
             </button>
+            {g}
           </li>
         ))}
       </ul>
