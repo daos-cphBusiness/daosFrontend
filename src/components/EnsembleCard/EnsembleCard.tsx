@@ -6,11 +6,12 @@ export type EnsembleCardProps = {
   variant: "join" | "view";
   title: string;
   description: string;
+  genre: string;
   onClick?: () => void;
 };
 
 export function EnsembleCard(props: EnsembleCardProps) {
-  const { variant, title, description, onClick } = props;
+  const { variant, title, description, genre, onClick } = props;
 
   return (
     <div className={styles.cardContainer}>
@@ -19,6 +20,7 @@ export function EnsembleCard(props: EnsembleCardProps) {
         {/* <img src={InstrumentIcon} alt="icon" /> */}
       </div>
       <p className={styles.description}>{description}</p>
+      <p className={styles.genre}>{"Genre: " + genre}</p>
       {variant === "join" && (
         <div className={styles.cta}>
           <Button variant="secondary" size="auto" onClick={onClick}>

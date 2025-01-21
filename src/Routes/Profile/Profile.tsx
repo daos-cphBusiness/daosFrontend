@@ -151,6 +151,11 @@ export function Profile() {
                     key={ensemble._id}
                     variant="view"
                     title={ensemble.name}
+                    genre={
+                      ensemble.genre && ensemble.genre.length > 0
+                        ? ensemble.genre[0]
+                        : "Unknown"
+                    } // Safe fallback
                     description={ensemble.description}
                   />
                 ))}
@@ -175,7 +180,7 @@ export function Profile() {
                     variant="view"
                     key={post._id}
                     title={post.title}
-                    author={post.user?.fullName} 
+                    author={post.user?.fullName}
                     instrument={post.instrument}
                   />
                 ))}

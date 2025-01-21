@@ -4,9 +4,9 @@ import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard.tsx";
 import Navbar from "../../components/Navbar/Navbar.tsx";
 
 export function EnsemblesPage() {
-  const [ensembles, setEnsembles] = useState<{ _id: string; name: string; description: string }[]>(
-    []
-  );
+  const [ensembles, setEnsembles] = useState<
+    { _id: string; name: string; genre: string; description: string }[]
+  >([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -66,7 +66,6 @@ export function EnsemblesPage() {
     }
   };
 
-
   return (
     <div>
       <Navbar />
@@ -78,6 +77,11 @@ export function EnsemblesPage() {
               key={ensemble._id}
               variant="join"
               title={ensemble.name}
+              genre={
+                ensemble.genre && ensemble.genre.length > 0
+                  ? ensemble.genre[0]
+                  : "Unknown"
+              } // Safe fallback
               description={ensemble.description}
               onClick={() => handleButtonClick(ensemble._id)}
             />

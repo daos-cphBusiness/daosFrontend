@@ -13,6 +13,7 @@ import { Index } from "./components/Index/Index";
 import { CreatePost } from "./Routes/CreatePost/CreatePost";
 import { AddIntrument } from "./Routes/AddIntrument/AddInstrument";
 import { MusiciansPage } from "./Routes/MusiciansPage/MusiciansPage";
+import { PostsPage } from "./Routes/PostsPage/PostsPage";
 
 export function App() {
   return (
@@ -31,6 +32,7 @@ export function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/add-intrument" element={<AddIntrument />} />
           <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/posts" element={<PostsPage />} />
         </Routes>
       </BrowserRouter>
     </>

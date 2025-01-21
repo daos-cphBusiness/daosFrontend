@@ -36,6 +36,13 @@
   width: 100%;
 }
 
+.genre {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--red);
+  align-self: flex-start;
+}
 .cta {
   align-self: flex-end;
 }
