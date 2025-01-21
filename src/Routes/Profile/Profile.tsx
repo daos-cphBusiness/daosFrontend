@@ -177,7 +177,7 @@ export function Profile() {
               <div className={styles.infoSectionCards}>
                 {posts?.map((post) => (
                   <PostCard
-                    variant="view"
+                    variant="join"
                     key={post._id}
                     title={post.title}
                     author={post.user?.fullName}

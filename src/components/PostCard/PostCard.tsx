@@ -38,9 +38,12 @@ export function PostCard(props: PostCardProps) {
       </div>
 
       {variant === "join" && (
-        <div className={styles.cta}>
+        <div className={styles.cta} style={{ display: "flex", gap: "8px" }}>
           <Button variant="secondary" size="auto" onClick={onClick}>
-            Join
+            Delete
+          </Button>
+          <Button variant="secondary" size="auto" onClick={onClick}>
+            Update
           </Button>
         </div>
       )}
