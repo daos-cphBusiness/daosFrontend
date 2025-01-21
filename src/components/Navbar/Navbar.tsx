@@ -28,7 +28,9 @@ export default function Navbar() {
         <Link to="/" className={styles.logo}>
           Music Samspil
         </Link>
-        <p className={styles.logoText}>Skabt af DAOS - Dansk Amatørorkester Samvirke</p>
+        <p className={styles.logoText}>
+          Skabt af DAOS - Dansk Amatørorkester Samvirke
+        </p>
       </div>
 
       {isAuthenticated ? (
@@ -38,6 +40,9 @@ export default function Navbar() {
           </Link>
           <Link to="/ensembles" className={styles.customLink}>
             Find Ensemble
+          </Link>
+          <Link to="/posts" className={styles.customLink}>
+            Find Post
           </Link>
           <Link to="/create-ensemble" className={styles.customLink}>
             Create Ensemble
