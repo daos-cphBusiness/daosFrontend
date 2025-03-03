@@ -6,8 +6,8 @@ import UserIcon from "../../assets/icons/user-icon.svg";
 import { EnsembleCard } from "../../components/EnsembleCard/EnsembleCard";
 import styles from "./Profile.module.css";
 import { PostCard } from "../../components/PostCard/PostCard";
-import { useUser } from "../../context/UserContext";
 import { User, Ensemble } from "../../types/global";
+import { useUser } from "../../context/useUser";
 
 // after logging the data of the response we declare new types to make the state of each data type safe
 
@@ -175,7 +175,7 @@ export function Profile() {
                     variant="view"
                     key={post._id}
                     title={post.title}
-                    author={post.user?.fullName} 
+                    author={post.user?.fullName}
                     instrument={post.instrument}
                   />
                 ))}

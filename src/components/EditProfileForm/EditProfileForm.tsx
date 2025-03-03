@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../context/useUser";
 
 export function EditProfileForm() {
   const navigate = useNavigate();
